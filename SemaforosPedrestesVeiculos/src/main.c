@@ -89,7 +89,7 @@ static void amarelo_led_thread(void *arg1, void *arg2, void *arg3)
 			set_led(PEDESTRE_RED_PIN, 0, "VERMELHO");
 			set_led(PEDESTRE_AMARELO_PIN, 1, "AMARELO");
 			printk("LED Amarelo acesso\n");
-			k_msleep(2000);
+			k_msleep(1000);
 			set_led(PEDESTRE_AMARELO_PIN, 0, "AMARELO");
 			k_mutex_unlock(&pedestre_led_mutex);
 			k_sem_give(&red_led_permission);
@@ -129,7 +129,7 @@ int main(void)
 		printk("Falha no LED Amarelo");
 		return 0;
 	}
-	printk("LED Vermelho pronto\n");
+	printk("LED Amarelo pronto\n");
 	
 	k_thread_create(&green_thread_data, green_stack, STACK_SIZE,
 			green_led_thread, NULL, NULL, NULL,
@@ -139,7 +139,7 @@ int main(void)
 			red_led_thread, NULL, NULL, NULL,
 			THREAD_PRIORITY, 0, K_NO_WAIT);
 	
-	k_thread_create(&amarelo_led_thread, amarelo_stack, STACK_SIZE,
+	k_thread_create(&amarelo_thread_data, amarelo_stack, STACK_SIZE,
 			amarelo_led_thread, NULL, NULL, NULL,
 			THREAD_PRIORITY, 0, K_NO_WAIT);
 	printk("Threads prontas\n");
