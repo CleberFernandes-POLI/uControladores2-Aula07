@@ -6,8 +6,8 @@
 #define STACK_SIZE 1024
 #define THREAD_PRIORITY 5
 
-#define PEDESTRIAN_RED_PIN   18 // Pino PTB18 | LED Vermelho
-#define PEDESTRIAN_GREEN_PIN 19 // Pino PTB19 | LED Verde
+#define PEDESTRIAN_RED_PIN   8 // Pino PTB8 | LED Vermelho
+#define PEDESTRIAN_GREEN_PIN 9 // Pino PTB9 | LED Verde
 
 static const struct device *gpio_port = DEVICE_DT_GET(DT_NODELABEL(gpiob));
 
